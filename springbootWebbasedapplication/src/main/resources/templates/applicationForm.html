@@ -2,27 +2,56 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Application Form</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 <body>
     <h1>Application Form</h1>
-
     <form th:action="@{/apply}" method="post">
         <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
+        <input type="text" id="name" name="name">
+
 
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+        <input type="email" id="email" name="email">
+
 
         <label for="phone">Phone:</label>
-        <input type="tel" id="phone" name="phone" required>
+        <input type="text" id="phone" name="phone">
+
 
         <label for="message">Message:</label>
-        <textarea id="message" name="message" required></textarea>
+        <textarea id="message" name="message"></textarea>
 
-        <button type="submit">Submit</button>
+
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender">
+            <option th:each="gender : ${genders}" th:value="${gender}" th:text="${gender}"></option>
+        </select>
+
+
+        <label for="dateOfBirth">Date of Birth:</label>
+        <input type="date" id="dateOfBirth" name="dateOfBirth">
+
+
+        <label for="birthPlaceIndia">Birth Place India:</label>
+        <input type="checkbox" id="birthPlaceIndia" name="birthPlaceIndia">
+
+
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city">
+
+
+        <input type="submit" value="Submit">
     </form>
 
-    <p th:if="${success}">[[${success}]]</p>
-    <p th:if="${error}">[[${error}]]</p>
+    <script>
+        $(document).ready(function() {
+            $("#city").autocomplete({
+                source: "/cities"
+            });
+        });
+    </script>
 </body>
 </html>
