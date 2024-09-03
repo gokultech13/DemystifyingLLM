@@ -41,7 +41,7 @@ public class ApplicationFormController {
         System.out.println("Gender: " + gender);
         System.out.println("Date of Birth: " + dateOfBirth);
         System.out.println("Birth Place India: " + birthPlaceIndia);
-        //System.out.println("City: " + city);
+        System.out.println("City: " + city);
 
         // Add a success message to the model
         model.addAttribute("success", "Application submitted successfully!");
@@ -49,14 +49,14 @@ public class ApplicationFormController {
         return "applicationForm"; // Return to the same page with a success message
     }
 
-    // @GetMapping("/cities")
-    // @ResponseBody
-    // public List<String> getCities(@RequestParam("term") String term) {
-    //     // Return a list of cities that match the search term
-    //     // For example, you could query a database or a static list
-    //     List<String> cities = Arrays.asList("New York", "Los Angeles", "Chicago", "Houston", "Philadelphia", "London", "Paris", "Berlin", "Mumbai", "Delhi");
-    //     return cities.stream()
-    //            .filter(city -> city.toLowerCase().contains(term.toLowerCase()))
-    //            .collect(Collectors.toList());
-    // }
+    @GetMapping("/cities")
+    @ResponseBody
+    public List<String> getCities(@RequestParam("term") String term) {
+        // Return a list of cities that match the search term
+        // For example, you could query a database or a static list
+        List<String> cities = Arrays.asList("New York", "Los Angeles", "Chicago", "Houston", "Philadelphia", "London", "Paris", "Berlin", "Mumbai", "Delhi");
+        return cities.stream()
+               .filter(city -> city.toLowerCase().contains(term.toLowerCase()))
+               .collect(Collectors.toList());
+    }
 }
