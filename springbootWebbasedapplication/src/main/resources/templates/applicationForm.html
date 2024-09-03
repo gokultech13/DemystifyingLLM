@@ -39,8 +39,17 @@
         <input type="checkbox" id="birthPlaceIndia" name="birthPlaceIndia">
 
 
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city">
+
+
         <input type="submit" value="Submit">
     </form>
 
-</body>
-</html>
+    <script>
+        $(document).ready(function() {
+            $("#city").autocomplete({
+                source: "/cities"
+            });
+        });
+    </script>
