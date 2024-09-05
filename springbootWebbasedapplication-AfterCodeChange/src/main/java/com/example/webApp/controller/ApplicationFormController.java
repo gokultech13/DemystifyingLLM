@@ -29,7 +29,7 @@ public class ApplicationFormController {
                                    @RequestParam("gender") String gender,
                                    @RequestParam("dateOfBirth") LocalDate dateOfBirth,
                                    @RequestParam("birthPlaceIndia") boolean birthPlaceIndia,
-                                   @RequestParam("city") String city,
+                                   //@RequestParam("city") String city,
                                    Model model) {
 
         // Process the application form data
